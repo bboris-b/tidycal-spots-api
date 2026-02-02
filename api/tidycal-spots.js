@@ -21,22 +21,21 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Step 1: Recupera info sul booking type (per avere le date degli eventi)
-    const bookingTypeResponse = await fetch(
-      `https://tidycal.com/api/bookings/types/${BOOKING_TYPE_ID}`,
+    // Step 1: Recupera info sul booking type dall'endpoint pubblico della pagina
+    const publicPageResponse = await fetch(
+      `https://tidycal.com/benbugli/office-hours-group-session?json`,
       {
         headers: {
-          'Authorization': `Bearer ${TIDYCAL_API_TOKEN}`,
           'Accept': 'application/json',
         },
       }
     );
 
-    if (!bookingTypeResponse.ok) {
-      throw new Error(`TidyCal API error: ${bookingTypeResponse.status}`);
+    if (!publicPageResponse.ok) {
+      throw new Error(`TidyCal public page error: ${publicPageResponse.status}`);
     }
 
-    const bookingTypeData = await bookingTypeResponse.json();
+    const bookingTypeData = await publicPageResponse.json();
     
     // Step 2: Trova il prossimo evento futuro
     const now = new Date();

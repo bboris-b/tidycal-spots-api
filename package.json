@@ -1,0 +1,17 @@
+{
+  "name": "tidycal-spots-api",
+  "version": "1.0.0",
+  "description": "Serverless API to fetch available spots from TidyCal for Ben Bugli's group sessions",
+  "main": "api/tidycal-spots.js",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "keywords": [
+    "tidycal",
+    "api",
+    "serverless",
+    "vercel"
+  ],
+  "author": "Ben Bugli",
+  "license": "MIT"
+}
